@@ -43,7 +43,7 @@ public class TokenService {
                     .verify(token)// retorna um objeto decodificado do token
                     .getSubject();// pega o subject, no caso meu login
         } catch (JWTVerificationException e) {
-            return "";
+            return null;
         }
     }
 

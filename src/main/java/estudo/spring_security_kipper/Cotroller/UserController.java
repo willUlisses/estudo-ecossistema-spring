@@ -4,6 +4,7 @@ import estudo.spring_security_kipper.Model.User;
 import estudo.spring_security_kipper.Service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<List<User>> findAll() {
+        System.out.println("Authorities do usuário logado: " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
 

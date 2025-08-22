@@ -47,6 +47,6 @@ public class SecurityFilter extends OncePerRequestFilter {
     private String recoverToken(HttpServletRequest request) {
         String authHeader = request.getHeader("Authorization"); // pego o token associado ao header/chave "Authorization"
         if (authHeader == null) return null; // retorna null se não tiver nenhum ‘token’ com aquele header na request
-        return authHeader.replace("Bearer", ""); // tira o prefixo Bearer do token
+        return authHeader.replace("Bearer ", ""); // tira o prefixo Bearer do token
     }
 }
