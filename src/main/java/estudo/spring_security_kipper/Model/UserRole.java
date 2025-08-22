@@ -1,8 +1,8 @@
 package estudo.spring_security_kipper.Model;
 
 public enum UserRole {
-    ADMIN("admin"),
-    USER("user");
+    USER("user"),
+    ADMIN("admin");
 
     private String role;
 

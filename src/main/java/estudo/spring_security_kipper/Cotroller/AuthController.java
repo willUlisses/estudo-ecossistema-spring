@@ -1,9 +1,11 @@
 package estudo.spring_security_kipper.Cotroller;
 
 import estudo.spring_security_kipper.Model.AuthenticationDTO;
+import estudo.spring_security_kipper.Model.LoginResponseDTO;
 import estudo.spring_security_kipper.Model.RegisterDTO;
 import estudo.spring_security_kipper.Model.User;
 import estudo.spring_security_kipper.Repository.UserRepository;
+import estudo.spring_security_kipper.Security.TokenService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,10 +23,12 @@ public class AuthController {
 
     private AuthenticationManager authenticationManager;
     private UserRepository repository;
+    private TokenService tokenService;
 
-    public AuthController(AuthenticationManager authenticationManager, UserRepository repository) {
+    public AuthController(AuthenticationManager authenticationManager, UserRepository repository, TokenService tokenService) {
         this.authenticationManager = authenticationManager;
         this.repository = repository;
+        this.tokenService = tokenService;
     }
 
     @PostMapping("/login")
@@ -32,7 +36,9 @@ public class AuthController {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         Authentication authenticationManager = this.authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok().build();
+        String token = tokenService.generateToken((User) authenticationManager.getPrincipal());
+
+        return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
     @PostMapping("/register")

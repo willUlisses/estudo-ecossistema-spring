@@ -40,8 +40,8 @@ public class TokenService {
             return JWT.require(algorithm)// -> pega o algoritmo usado para assinatura do token juntamente da secret
                     .withIssuer("auth-api")// verifica o issuer
                     .build()
-                    .verify(token)//decoda o token
-                    .getSubject();// pega o subject, no caso meu usuario
+                    .verify(token)// retorna um objeto decodificado do token
+                    .getSubject();// pega o subject, no caso meu login
         } catch (JWTVerificationException e) {
             return "";
         }

@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity(name = "user")
-@Table(name = "tabela_usuario")
+@Table(name = "tabela_usuario_jwt")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
