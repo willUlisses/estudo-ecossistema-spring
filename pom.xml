@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>estudo</groupId>
-	<artifactId>spring-security-kipper</artifactId>
+	<artifactId>spring-security-implemented</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-security-kipper</name>
 	<description>estudo spring security mas pelo video da kipper dev</description>
